@@ -36,10 +36,11 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+      const hadSession = !!localStorage.getItem('eventflow_auth_session');
       // Clear storage
       localStorage.removeItem('eventflow_auth_session');
-      // Redirect to login if not already there and not doing check session
-      if (!window.location.pathname.includes('/auth/login') && !window.location.pathname.includes('/auth-success')) {
+      // Only redirect to login if they actually had an active session that expired, and not already on auth pages
+      if (hadSession && !window.location.pathname.includes('/auth/login') && !window.location.pathname.includes('/auth-success')) {
         window.location.href = '/auth/login?error=expired';
       }
     }
