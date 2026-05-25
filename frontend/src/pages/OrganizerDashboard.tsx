@@ -19,17 +19,6 @@ import {
 } from 'recharts';
 import { Users, Plus, LayoutGrid, FileSpreadsheet, Edit, Trash2 } from 'lucide-react';
 
-const getChartTooltipStyle = () => {
-  const root = document.documentElement;
-  const styles = getComputedStyle(root);
-  return {
-    backgroundColor: styles.getPropertyValue('--bg-secondary').trim() || '#111827',
-    border: `1px solid ${styles.getPropertyValue('--border-glass').trim() || 'rgba(255,255,255,0.08)'}`,
-    borderRadius: '8px',
-    color: styles.getPropertyValue('--text-primary').trim() || '#f8fafc',
-  };
-};
-
 export const OrganizerDashboard: React.FC = () => {
   const { user } = useAuthStore();
   const queryClient = useQueryClient();
