@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/*
+ * Tailwind @theme is resolved at BUILD TIME — it cannot use var().
+ * Static dark-mode defaults are used as the Tailwind baseline.
+ * Runtime theme switching happens via :root[data-theme] CSS variable overrides.
+ */
+@theme {
+  --color-primary: #818cf8;
+  --color-primary-hover: #6366f1;
+  --color-secondary: #f472b6;
+  --color-secondary-hover: #ec4899;
+  --color-accent: #2dd4bf;
+  --color-accent-hover: #14b8a6;
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Natively map runtime CSS variables to Tailwind utility classes */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-glass: var(--bg-glass);
+
+  --color-border-glass: var(--border-glass);
+  --color-border-subtle: var(--border-subtle);
+}
+
+/* ============================================================
+   DESIGN TOKENS — DARK MODE (default)
+   ============================================================ */
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-width: 1200px;
+
+  /* Backgrounds */
+  --bg-primary: #0b0f19;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  --bg-glass: rgba(17, 24, 39, 0.65);
+
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* Colors */
+  --color-primary: #818cf8;
+  --color-primary-hover: #6366f1;
+  --color-secondary: #f472b6;
+  --color-secondary-hover: #ec4899;
+  --color-accent: #2dd4bf;
+  --color-accent-hover: #14b8a6;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --gradient-secondary: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(17, 24, 39, 0.75) 0%, rgba(31, 41, 55, 0.5) 100%);
+  --gradient-dark: linear-gradient(135deg, #090d16 0%, #111827 100%);
+
+  /* Borders */
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(129, 140, 248, 0.15);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -1px rgba(0,0,0,0.2);
+  --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -2px rgba(0,0,0,0.3);
+  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.4);
+  --shadow-glass: 0 8px 32px 0 rgba(0,0,0,0.37);
+
+  /* Glass */
+  --glass-blur: blur(16px);
+
+  /* Badges */
+  --badge-bg: rgba(129,140,248,0.15);
+  --badge-text: #a5b4fc;
+
+  /* Scrollbar */
+  --scrollbar-bg: #1f2937;
+  --scrollbar-thumb: #374151;
+}
+
+/* ============================================================
+   DESIGN TOKENS — LIGHT MODE
+   ============================================================ */
+:root[data-theme="light"] {
+  --bg-primary: #f6f8fd;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #eff2fb;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-secondary: #ec4899;
+  --color-secondary-hover: #db2777;
+  --color-accent: #14b8a6;
+  --color-accent-hover: #0d9488;
+
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+  --gradient-glass: rgba(255, 255, 255, 0.82);
+  --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+
+  --border-glass: rgba(99, 102, 241, 0.18);
+  --border-subtle: rgba(99, 102, 241, 0.1);
+
+  --shadow-sm: 0 4px 6px -1px rgba(99,102,241,0.06), 0 2px 4px -1px rgba(99,102,241,0.04);
+  --shadow-md: 0 10px 15px -3px rgba(99,102,241,0.1), 0 4px 6px -2px rgba(99,102,241,0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(99,102,241,0.14), 0 10px 10px -5px rgba(99,102,241,0.06);
+  --shadow-glass: 0 8px 32px 0 rgba(99,102,241,0.09);
+
+  --glass-blur: blur(14px);
+
+  --badge-bg: rgba(99,102,241,0.1);
+  --badge-text: #4f46e5;
+
+  --scrollbar-bg: #e2e8f0;
+  --scrollbar-thumb: #cbd5e1;
+}
+
+/* ============================================================
+   GLOBAL BASE
+   ============================================================ */
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(circle at 50% -20%, rgba(99,102,241,0.12) 0%, transparent 60%),
+    radial-gradient(circle at 10% 40%, rgba(236,72,153,0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(20,184,166,0.04) 0%, transparent 40%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Note: we completely removed the :root[data-theme="light"] body background-image override
+   to make the background-image static and identical in both themes.
+   This avoids any sudden snapping of the gradient when the theme transitions,
+   leaving only background-color to fade smoothly! */
+
+/* ============================================================
+   SMOOTH THEME TRANSITIONS — .theme-transitioning pattern
+   
+   ★ KEY INSIGHT: We NEVER add permanent transitions to div/span/etc.
+     because that fights Framer Motion spring animations and causes jank.
+   
+   ★ Instead: we briefly add class "theme-transitioning" to <html>
+     for exactly 450ms when the user clicks the theme toggle.
+     Only during that 450ms window do transitions fire.
+     After that, class is removed → Framer Motion works normally.
+   ============================================================ */
+
+/* Always-on: only body bg — these are safe as they don't affect JS/Framer Motion animations */
+body {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* During theme toggle only — all elements get color transitions */
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition:
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    fill 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ============================================================
+   COMPONENT: GLASS PANEL
+   ============================================================ */
+.glass-panel {
+  background-color: var(--bg-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+}
+
+/* ============================================================
+   UTILITY: TEXT GRADIENT
+   ============================================================ */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   UTILITY: BG-GRADIENT-PRIMARY (button & CTA backgrounds)
+   ============================================================ */
+.bg-gradient-primary {
+  background: var(--gradient-primary) !important;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-bg); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ============================================================
+   SKELETON LOADER ANIMATION
+   ============================================================ */
+@keyframes loading {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.animate-skeleton {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--border-glass) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+/* ============================================================
+   HIDE HTML5 NUMBER INPUT SPINNERS
+   ============================================================ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* ============================================================
+   ★ LIGHT THEME — GLOBAL HARDCODED CLASS OVERRIDES ★
+   Because Tailwind dark classes like text-white, bg-slate-950
+   are baked in at build time and won't respond to CSS variables,
+   we override them globally here when data-theme="light".
+   ============================================================ */
+
+/* ---- Primary text: text-white → var(--text-primary) ---- */
+:root[data-theme="light"] .text-white {
+  color: var(--text-primary) !important;
+}
+
+/* ---- Muted/secondary: text-slate-* → theme text ---- */
+:root[data-theme="light"] .text-slate-400,
+:root[data-theme="light"] .text-slate-300,
+:root[data-theme="light"] .text-slate-500,
+:root[data-theme="light"] .text-slate-200 {
+  color: var(--text-muted) !important;
+}
+:root[data-theme="light"] .text-slate-600,
+:root[data-theme="light"] .text-slate-700 {
+  color: var(--text-secondary) !important;
+}
+
+/* ---- text-gray-* ---- */
+:root[data-theme="light"] .text-gray-400,
+:root[data-theme="light"] .text-gray-300,
+:root[data-theme="light"] .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+/* ---- Semantic text color classes are mapped natively in @theme above ---- */
+
+/* ---- Solid dark backgrounds → light equivalents ---- */
+:root[data-theme="light"] .bg-slate-950 { background-color: var(--bg-secondary) !important; }
+:root[data-theme="light"] .bg-slate-900 { background-color: var(--bg-tertiary)  !important; }
+:root[data-theme="light"] .bg-slate-800 { background-color: #dde3ef              !important; }
+
+/* ---- Opacity-suffixed dark backgrounds ---- */
+:root[data-theme="light"] .bg-slate-950\/95 { background-color: rgba(255,255,255,0.97) !important; }
+:root[data-theme="light"] .bg-slate-950\/90 { background-color: rgba(255,255,255,0.93) !important; }
+:root[data-theme="light"] .bg-slate-950\/85 { background-color: rgba(255,255,255,0.90) !important; color: var(--text-primary) !important; }
+:root[data-theme="light"] .bg-slate-950\/80 { background-color: rgba(255,255,255,0.88) !important; }
+:root[data-theme="light"] .bg-slate-900\/40 { background-color: rgba(239,242,251,0.80) !important; }
+:root[data-theme="light"] .bg-slate-900\/30 { background-color: rgba(239,242,251,0.70) !important; }
+:root[data-theme="light"] .bg-slate-900\/20 { background-color: rgba(239,242,251,0.60) !important; }
+:root[data-theme="light"] .bg-slate-900\/10 { background-color: rgba(239,242,251,0.40) !important; }
+:root[data-theme="light"] .bg-slate-900\/5  { background-color: rgba(239,242,251,0.25) !important; }
+:root[data-theme="light"] .bg-slate-800\/40 { background-color: rgba(221,227,239,0.80) !important; }
+
+/* ---- Hover dark backgrounds ---- */
+:root[data-theme="light"] .hover\:bg-slate-800\/40:hover { background-color: var(--bg-tertiary) !important; }
+:root[data-theme="light"] .hover\:bg-slate-900:hover     { background-color: var(--bg-tertiary) !important; }
+:root[data-theme="light"] .hover\:bg-white\/10:hover     { background-color: rgba(99,102,241,0.08) !important; }
+:root[data-theme="light"] .hover\:bg-white\/5:hover      { background-color: rgba(99,102,241,0.05) !important; }
+
+/* ---- Glass panel overrides ---- */
+:root[data-theme="light"] .glass-panel {
+  background: var(--gradient-glass) !important;
+  border-color: var(--border-glass) !important;
+  box-shadow: var(--shadow-glass) !important;
+}
+
+/* ---- Borders: white/5 and white/10 → indigo-tinted ---- */
+:root[data-theme="light"] .border-white\/5  { border-color: rgba(99,102,241,0.12) !important; }
+:root[data-theme="light"] .border-white\/10 { border-color: rgba(99,102,241,0.18) !important; }
+:root[data-theme="light"] .border-white\/20 { border-color: rgba(99,102,241,0.25) !important; }
+
+/* ---- Input, textarea, select fields ---- */
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(99,102,241,0.22) !important;
+}
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+:root[data-theme="light"] input:focus,
+:root[data-theme="light"] textarea:focus,
+:root[data-theme="light"] select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+  outline: none !important;
+}
+
+/* ---- Read-only inputs: extra-faded placeholder so locked fields look clearly inactive ---- */
+input[readonly]::placeholder,
+textarea[readonly]::placeholder {
+  color: var(--text-muted);
+  opacity: 0.45;
+}
+/* Dark mode: same treatment */
+:root[data-theme="dark"] input[readonly]::placeholder,
+:root[data-theme="dark"] textarea[readonly]::placeholder {
+  color: var(--text-muted);
+  opacity: 0.45;
+}
+/* Light mode: same treatment */
+:root[data-theme="light"] input[readonly]::placeholder,
+:root[data-theme="light"] textarea[readonly]::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.45;
+}
+
+/* ---- bg-bg-primary / bg-bg-secondary utility classes ---- */
+:root[data-theme="light"] .bg-bg-primary   { background-color: var(--bg-primary)   !important; }
+:root[data-theme="light"] .bg-bg-secondary { background-color: var(--bg-secondary) !important; }
+:root[data-theme="light"] .bg-bg-tertiary  { background-color: var(--bg-tertiary)  !important; }
+
+/* ---- Gradient utility buttons keep white text ---- */
+:root[data-theme="light"] .bg-gradient-primary,
+:root[data-theme="light"] [class*="bg-gradient-primary"] {
+  background: var(--gradient-primary) !important;
+  color: #ffffff !important;
+}
+
+/* ---- Card bottom overlay gradients (image overlays — preserve for readability) ---- */
+/* from-slate-950\/80 on image overlays — keep dark for contrast over photos */
+
+/* ---- Table cells ---- */
+:root[data-theme="light"] td,
+:root[data-theme="light"] th {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(99,102,241,0.1) !important;
+}
+
+/* ---- Navbar header light mode ---- */
+:root[data-theme="light"] header {
+  background: rgba(255,255,255,0.92) !important;
+  border-bottom-color: rgba(99,102,241,0.15) !important;
+  box-shadow: 0 4px 24px rgba(99,102,241,0.07) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+/* ---- Footer ---- */
+:root[data-theme="light"] footer {
+  background-color: var(--bg-secondary) !important;
+  border-top-color: rgba(99,102,241,0.12) !important;
+}
+
+/* ---- Modal backdrop ---- */
+:root[data-theme="light"] .fixed.inset-0.bg-black\/50,
+:root[data-theme="light"] .fixed.inset-0.bg-slate-950 {
+  background-color: rgba(15,23,42,0.5) !important;
+}
+
+/* ---- Skeleton loader for light mode ---- */
+:root[data-theme="light"] .animate-skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%) !important;
+  background-size: 200% 100% !important;
+}
+
+/* ---- QR code in light mode needs white background ---- */
+:root[data-theme="light"] svg.qr-code-svg,
+:root[data-theme="light"] .qr-wrapper svg {
+  background: white;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+/* ---- Preserve accent/status badge colors (intentionally no override) ---- */
+/* text-emerald-*, text-amber-*, text-rose-*, text-cyan-*,
+   text-indigo-400, text-indigo-300, text-primary, text-secondary */
